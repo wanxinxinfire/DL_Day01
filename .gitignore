@@ -1,0 +1,25 @@
+# ===== Visual Studio 缓存（本报错的元凶）=====
+.vs/
+
+# ===== 编译产物 =====
+bin/
+obj/
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+
+# ===== 用户特定文件 =====
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# ===== 构建/日志 =====
+*.userprefs
+*.publishsettings
+*.publish.xml
+
+# ===== Rider / 其他 IDE =====
+.idea/
+*.swp
