@@ -208,7 +208,7 @@ namespace Dl_FormsApp1 {
                         plc.Write("Q0.5", false);
                         break;
                     case NumberEunm.even_:
-                        plc.Write("Q0.5",true);
+                        plc.Write("Q0.5", true);
                         plc.Write("Q1.1", false);
                         plc.Write("Q0.4", false);
                         break;
@@ -460,7 +460,7 @@ namespace Dl_FormsApp1 {
             plc.Write("Q1.1", false);
         }
 
-        private async void button12_Click(object sender, EventArgs e)
+        private void button12_Click(object sender, EventArgs e)
         {
 
             //检查plc是否连接
@@ -482,6 +482,13 @@ namespace Dl_FormsApp1 {
 
         }
 
+        private void button15_Click(object sender, EventArgs e)
+        {
+            yellowLightFlag = false;
+            // 设置PLC黄灯关闭
+            plc.Write(EnumExtension.GetPlcAddress(PlcLightEnum.Yellow), false);
+        }
+
         private NumberEunm GetNumberType(double number)
         {
             // 判断是不是小数：小数部分不为0
@@ -500,6 +507,73 @@ namespace Dl_FormsApp1 {
                 return NumberEunm.even_;
             }
         }
+
+        // 定义黄灯闪烁按钮状态成员变量
+        private bool yellowLightFlag = false;
+
+        // 1. 点击开始按钮  黄灯200ms 闪烁     点击停止按钮  闪烁停止 
+        private async void button16_Click(object sender, EventArgs e)
+        {
+            // 判断PLC是否
+            if (!checkPlcOpen())
+            {
+                return;
+            }
+            // 设置闪烁
+            while (!yellowLightFlag)
+            {
+                plc.Write("Q1.1", true);
+                await Task.Delay(200);
+            }
+        }
+
+        // 设置黄灯闪烁变量值
+        bool yellowLightFlashingFlag = false;
+
+
+        //写一个红绿灯按钮 红灯亮3秒
+        //然后绿灯亮三秒 然后黄灯闪烁
+        //然后一直循环 直到点击停止按钮。所有灯全部熄灭
+        private async void button18_Click(object sender, EventArgs e)
+        {
+            //写一个红绿灯按钮 红灯亮3秒
+            plc.Write(EnumExtension.GetPlcAddress(PlcLightEnum.Red), true);
+            await Task.Delay(3000);
+            plc.Write(EnumExtension.GetPlcAddress(PlcLightEnum.Red), false);
+            //然后绿灯亮三秒 然后黄灯闪烁
+            plc.Write(EnumExtension.GetPlcAddress(PlcLightEnum.Green), true);
+            await Task.Delay(3000);
+            plc.Write(EnumExtension.GetPlcAddress(PlcLightEnum.Green), false);
+            while (!yellowLightFlashingFlag)
+            {
+                plc.Write(EnumExtension.GetPlcAddress(PlcLightEnum.Yellow), true);
+                await Task.Delay(1000);
+            }
+            //然后一直循环 直到点击停止按钮。所有灯全部熄灭
+
+        }
+
+
+        /// <summary>
+        /// 获取枚举上Description字符串
+        /// </summary>
+        public static string GetPlcAddress(this Enum value)
+        {
+            var fieldInfo = value.GetType().GetField(value.ToString());
+            var attrs = fieldInfo.GetCustomAttributes(typeof(DescriptionAttribute), false) as DescriptionAttribute[];
+            if (attrs != null && attrs.Length > 0)
+            {
+                return attrs[0].Description;
+            }
+            return "";
+        }
+
+        private void button19_Click(object sender, EventArgs e)
+        {
+            plc.Write(EnumExtension.GetPlcAddress(PlcLightEnum.Red), false);
+            plc.Write(EnumExtension.GetPlcAddress(PlcLightEnum.Yellow), false);
+            plc.Write(EnumExtension.GetPlcAddress(PlcLightEnum.Green), false);
+        }
     }
 
 
@@ -509,6 +583,20 @@ namespace Dl_FormsApp1 {
         yellow_light_on,
         red_light_on,
         green_light_on
+    }
+
+    /// <summary>
+    /// PLC三色灯枚举，Description存放PLC点位地址
+    /// </summary>
+    public enum PlcLightEnum {
+        [Description("Q0.4")]
+        Red,
+
+        [Description("Q0.5")]
+        Green,
+
+        [Description("Q1.1")]
+        Yellow
     }
 
     // 添加奇数 偶数 小数枚举类

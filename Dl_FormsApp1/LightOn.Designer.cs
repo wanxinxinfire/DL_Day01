@@ -70,6 +70,11 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.button13 = new System.Windows.Forms.Button();
             this.button14 = new System.Windows.Forms.Button();
+            this.button15 = new System.Windows.Forms.Button();
+            this.button16 = new System.Windows.Forms.Button();
+            this.button17 = new System.Windows.Forms.Button();
+            this.button18 = new System.Windows.Forms.Button();
+            this.button19 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -224,7 +229,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(508, 465);
+            this.label4.Location = new System.Drawing.Point(866, 453);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(44, 18);
             this.label4.TabIndex = 20;
@@ -234,7 +239,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.ForeColor = System.Drawing.Color.Black;
-            this.label5.Location = new System.Drawing.Point(348, 465);
+            this.label5.Location = new System.Drawing.Point(706, 453);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(35, 18);
             this.label5.TabIndex = 19;
@@ -244,7 +249,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.ForeColor = System.Drawing.Color.Black;
-            this.label6.Location = new System.Drawing.Point(193, 465);
+            this.label6.Location = new System.Drawing.Point(551, 453);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(35, 18);
             this.label6.TabIndex = 18;
@@ -253,49 +258,49 @@
             // 
             // texBox_add_A
             // 
-            this.texBox_add_A.Location = new System.Drawing.Point(142, 532);
+            this.texBox_add_A.Location = new System.Drawing.Point(500, 520);
             this.texBox_add_A.Name = "texBox_add_A";
             this.texBox_add_A.Size = new System.Drawing.Size(123, 28);
             this.texBox_add_A.TabIndex = 21;
             // 
             // texBox_sub_A
             // 
-            this.texBox_sub_A.Location = new System.Drawing.Point(142, 583);
+            this.texBox_sub_A.Location = new System.Drawing.Point(500, 571);
             this.texBox_sub_A.Name = "texBox_sub_A";
             this.texBox_sub_A.Size = new System.Drawing.Size(123, 28);
             this.texBox_sub_A.TabIndex = 22;
             // 
             // texBox_mul_A
             // 
-            this.texBox_mul_A.Location = new System.Drawing.Point(142, 646);
+            this.texBox_mul_A.Location = new System.Drawing.Point(500, 634);
             this.texBox_mul_A.Name = "texBox_mul_A";
             this.texBox_mul_A.Size = new System.Drawing.Size(123, 28);
             this.texBox_mul_A.TabIndex = 23;
             // 
             // texBox_div_A
             // 
-            this.texBox_div_A.Location = new System.Drawing.Point(142, 701);
+            this.texBox_div_A.Location = new System.Drawing.Point(500, 689);
             this.texBox_div_A.Name = "texBox_div_A";
             this.texBox_div_A.Size = new System.Drawing.Size(123, 28);
             this.texBox_div_A.TabIndex = 24;
             // 
             // texBox_div_B
             // 
-            this.texBox_div_B.Location = new System.Drawing.Point(298, 701);
+            this.texBox_div_B.Location = new System.Drawing.Point(656, 689);
             this.texBox_div_B.Name = "texBox_div_B";
             this.texBox_div_B.Size = new System.Drawing.Size(123, 28);
             this.texBox_div_B.TabIndex = 28;
             // 
             // texBox_mul_B
             // 
-            this.texBox_mul_B.Location = new System.Drawing.Point(298, 643);
+            this.texBox_mul_B.Location = new System.Drawing.Point(656, 631);
             this.texBox_mul_B.Name = "texBox_mul_B";
             this.texBox_mul_B.Size = new System.Drawing.Size(123, 28);
             this.texBox_mul_B.TabIndex = 27;
             // 
             // texBox_sub_B
             // 
-            this.texBox_sub_B.Location = new System.Drawing.Point(298, 583);
+            this.texBox_sub_B.Location = new System.Drawing.Point(656, 571);
             this.texBox_sub_B.Name = "texBox_sub_B";
             this.texBox_sub_B.Size = new System.Drawing.Size(123, 28);
             this.texBox_sub_B.TabIndex = 26;
@@ -303,7 +308,7 @@
             // texBox_add_B
             // 
             this.texBox_add_B.HideSelection = false;
-            this.texBox_add_B.Location = new System.Drawing.Point(298, 532);
+            this.texBox_add_B.Location = new System.Drawing.Point(656, 520);
             this.texBox_add_B.Name = "texBox_add_B";
             this.texBox_add_B.Size = new System.Drawing.Size(123, 28);
             this.texBox_add_B.TabIndex = 25;
@@ -312,7 +317,7 @@
             // 
             this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(200)))), ((int)(((byte)(247)))));
             this.button3.ForeColor = System.Drawing.Color.Black;
-            this.button3.Location = new System.Drawing.Point(487, 522);
+            this.button3.Location = new System.Drawing.Point(845, 510);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(102, 45);
             this.button3.TabIndex = 29;
@@ -324,7 +329,7 @@
             // 
             this.button5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(170)))), ((int)(((byte)(86)))));
             this.button5.ForeColor = System.Drawing.Color.Black;
-            this.button5.Location = new System.Drawing.Point(487, 583);
+            this.button5.Location = new System.Drawing.Point(845, 571);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(102, 45);
             this.button5.TabIndex = 30;
@@ -336,7 +341,7 @@
             // 
             this.button9.BackColor = System.Drawing.Color.Green;
             this.button9.ForeColor = System.Drawing.Color.Black;
-            this.button9.Location = new System.Drawing.Point(487, 689);
+            this.button9.Location = new System.Drawing.Point(845, 677);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(102, 48);
             this.button9.TabIndex = 32;
@@ -348,7 +353,7 @@
             // 
             this.button10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.button10.ForeColor = System.Drawing.Color.Black;
-            this.button10.Location = new System.Drawing.Point(487, 634);
+            this.button10.Location = new System.Drawing.Point(845, 622);
             this.button10.Name = "button10";
             this.button10.Size = new System.Drawing.Size(102, 49);
             this.button10.TabIndex = 31;
@@ -360,7 +365,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.ForeColor = System.Drawing.Color.Black;
-            this.label7.Location = new System.Drawing.Point(62, 535);
+            this.label7.Location = new System.Drawing.Point(420, 523);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(26, 18);
             this.label7.TabIndex = 33;
@@ -371,7 +376,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.ForeColor = System.Drawing.Color.Black;
-            this.label8.Location = new System.Drawing.Point(62, 586);
+            this.label8.Location = new System.Drawing.Point(420, 574);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(26, 18);
             this.label8.TabIndex = 34;
@@ -381,7 +386,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.ForeColor = System.Drawing.Color.Black;
-            this.label9.Location = new System.Drawing.Point(62, 711);
+            this.label9.Location = new System.Drawing.Point(420, 699);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(26, 18);
             this.label9.TabIndex = 36;
@@ -391,7 +396,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.ForeColor = System.Drawing.Color.Black;
-            this.label10.Location = new System.Drawing.Point(62, 649);
+            this.label10.Location = new System.Drawing.Point(420, 637);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(26, 18);
             this.label10.TabIndex = 35;
@@ -401,7 +406,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.ForeColor = System.Drawing.Color.Black;
-            this.label11.Location = new System.Drawing.Point(713, 465);
+            this.label11.Location = new System.Drawing.Point(1071, 453);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(44, 18);
             this.label11.TabIndex = 37;
@@ -411,7 +416,7 @@
             // texBox_div_R
             // 
             this.texBox_div_R.ForeColor = System.Drawing.Color.Green;
-            this.texBox_div_R.Location = new System.Drawing.Point(664, 701);
+            this.texBox_div_R.Location = new System.Drawing.Point(1022, 689);
             this.texBox_div_R.Name = "texBox_div_R";
             this.texBox_div_R.ReadOnly = true;
             this.texBox_div_R.Size = new System.Drawing.Size(123, 28);
@@ -420,7 +425,7 @@
             // texBox_mul_R
             // 
             this.texBox_mul_R.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.texBox_mul_R.Location = new System.Drawing.Point(664, 640);
+            this.texBox_mul_R.Location = new System.Drawing.Point(1022, 628);
             this.texBox_mul_R.Name = "texBox_mul_R";
             this.texBox_mul_R.ReadOnly = true;
             this.texBox_mul_R.Size = new System.Drawing.Size(123, 28);
@@ -430,7 +435,7 @@
             // texBox_sub_R
             // 
             this.texBox_sub_R.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(170)))), ((int)(((byte)(86)))));
-            this.texBox_sub_R.Location = new System.Drawing.Point(664, 588);
+            this.texBox_sub_R.Location = new System.Drawing.Point(1022, 576);
             this.texBox_sub_R.Name = "texBox_sub_R";
             this.texBox_sub_R.ReadOnly = true;
             this.texBox_sub_R.Size = new System.Drawing.Size(123, 28);
@@ -439,7 +444,7 @@
             // texBox_add_R
             // 
             this.texBox_add_R.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(200)))), ((int)(((byte)(247)))));
-            this.texBox_add_R.Location = new System.Drawing.Point(664, 532);
+            this.texBox_add_R.Location = new System.Drawing.Point(1022, 520);
             this.texBox_add_R.Name = "texBox_add_R";
             this.texBox_add_R.ReadOnly = true;
             this.texBox_add_R.Size = new System.Drawing.Size(123, 28);
@@ -508,6 +513,59 @@
             this.button14.UseVisualStyleBackColor = false;
             this.button14.Click += new System.EventHandler(this.button14_Click);
             // 
+            // button15
+            // 
+            this.button15.BackColor = System.Drawing.Color.IndianRed;
+            this.button15.Location = new System.Drawing.Point(196, 444);
+            this.button15.Name = "button15";
+            this.button15.Size = new System.Drawing.Size(158, 36);
+            this.button15.TabIndex = 47;
+            this.button15.Text = "黄灯闪烁关闭";
+            this.button15.UseVisualStyleBackColor = false;
+            this.button15.Click += new System.EventHandler(this.button15_Click);
+            // 
+            // button16
+            // 
+            this.button16.BackColor = System.Drawing.Color.Lime;
+            this.button16.Location = new System.Drawing.Point(22, 444);
+            this.button16.Name = "button16";
+            this.button16.Size = new System.Drawing.Size(158, 36);
+            this.button16.TabIndex = 48;
+            this.button16.Text = "黄灯闪烁开启";
+            this.button16.UseVisualStyleBackColor = false;
+            this.button16.Click += new System.EventHandler(this.button16_Click);
+            // 
+            // button17
+            // 
+            this.button17.Location = new System.Drawing.Point(0, 0);
+            this.button17.Name = "button17";
+            this.button17.Size = new System.Drawing.Size(75, 23);
+            this.button17.TabIndex = 49;
+            this.button17.Text = "button17";
+            this.button17.UseVisualStyleBackColor = true;
+            // 
+            // button18
+            // 
+            this.button18.BackColor = System.Drawing.Color.Lime;
+            this.button18.Location = new System.Drawing.Point(22, 564);
+            this.button18.Name = "button18";
+            this.button18.Size = new System.Drawing.Size(150, 38);
+            this.button18.TabIndex = 50;
+            this.button18.Text = "红绿灯开始";
+            this.button18.UseVisualStyleBackColor = false;
+            this.button18.Click += new System.EventHandler(this.button18_Click);
+            // 
+            // button19
+            // 
+            this.button19.BackColor = System.Drawing.Color.IndianRed;
+            this.button19.Location = new System.Drawing.Point(196, 564);
+            this.button19.Name = "button19";
+            this.button19.Size = new System.Drawing.Size(150, 38);
+            this.button19.TabIndex = 51;
+            this.button19.Text = "红绿灯Stop";
+            this.button19.UseVisualStyleBackColor = false;
+            this.button19.Click += new System.EventHandler(this.button19_Click);
+            // 
             // LightOn
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
@@ -515,6 +573,11 @@
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(1161, 759);
+            this.Controls.Add(this.button19);
+            this.Controls.Add(this.button18);
+            this.Controls.Add(this.button17);
+            this.Controls.Add(this.button16);
+            this.Controls.Add(this.button15);
             this.Controls.Add(this.button14);
             this.Controls.Add(this.button13);
             this.Controls.Add(this.button12);
@@ -557,7 +620,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button1);
-            this.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.ForeColor = System.Drawing.Color.Black;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "LightOn";
             this.Text = "Form1";
@@ -612,6 +675,11 @@
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Button button13;
         private System.Windows.Forms.Button button14;
+        private System.Windows.Forms.Button button15;
+        private System.Windows.Forms.Button button16;
+        private System.Windows.Forms.Button button17;
+        private System.Windows.Forms.Button button18;
+        private System.Windows.Forms.Button button19;
     }
 }
 

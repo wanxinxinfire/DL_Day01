@@ -49,6 +49,7 @@
     <Compile Include="BasicGrammar.cs" />
     <Compile Include="Calculator.cs" />
     <Compile Include="ChainNullCheckDemo.cs" />
+    <Compile Include="EnumExtension.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Student.cs" />
