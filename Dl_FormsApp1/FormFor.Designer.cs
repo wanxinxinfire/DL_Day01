@@ -106,6 +106,7 @@
             this.Controls.Add(this.textBox1);
             this.Name = "FormFor";
             this.Text = "FormFor";
+            this.Load += new System.EventHandler(this.FormFor_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

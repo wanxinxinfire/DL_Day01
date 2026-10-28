@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using S7.Net;
 
 namespace Dl_FormsApp1 {
     public partial class LightOn : Form {
@@ -16,6 +17,9 @@ namespace Dl_FormsApp1 {
         {
             InitializeComponent();
         }
+
+        // 创建PLC连接对接
+        Plc plc = new Plc(CpuType.S7200Smart, "192.168.0.2", 0, 0);
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
@@ -27,22 +31,37 @@ namespace Dl_FormsApp1 {
 
         }
 
+
+        // 控制红灯灭
         private void button6_Click(object sender, EventArgs e)
         {
-            btn_red.BackColor = Color.Silver;
+            //btn_red.BackColor = Color.Silver;
+            // 设置PLC的红灯亮
+            plc.Write("Q0.4", false);
+            //btn_red.BackColor = Color.Red;
+            AddLog("红灯灭");
         }
 
+        // 控制红灯亮
         private void button1_Click(object sender, EventArgs e)
         {
-            btn_red.BackColor = Color.Red;
-            AddLog();
+
+            // 校验不通过直接return，终止后续代码
+            if (!checkPlcOpen())
+            {
+                return;
+            }
+            // 设置PLC的红灯亮
+            plc.Write("Q0.4", true);
+            //btn_red.BackColor = Color.Red;
+            AddLog("红灯亮");
 
         }
 
         #region 辅助日志方法
-        private void AddLog()
+        private void AddLog(string logStr)
         {
-            textBox1.Text += DateTime.Now + "红灯亮" + "\r\n";
+            textBox1.Text += $"【{DateTime.Now}】" + logStr + "\r\n";
             // 获取或设置文本框中选定的文本起始点
             textBox1.SelectionStart = textBox1.Text.Length;
             // 将控件内容滚动到当前插入符号位置
@@ -50,25 +69,57 @@ namespace Dl_FormsApp1 {
         }
         #endregion
 
+
+        // 检查PLC是否连接，返回true=已连接；false=未连接
+        private bool checkPlcOpen()
+        {
+            if (!plc.IsConnected) // 这里用你PLC对象自带的连接属性！
+            {
+                MessageBox.Show("请先连接PLC");
+                return false;
+            }
+            return true;
+        }
+
+        // 按钮单击控制开关
+        bool greenLightFlag = false;
         private void button2_Click(object sender, EventArgs e)
         {
+            // 检查PLC连接
+            checkPlcOpen();
             btn_green.BackColor = Color.Red;
+            if (!greenLightFlag)
+            {
+                plc.Write("Q0.5", true);
+                AddLog("绿灯亮");
+            }
+            else
+            {
+                plc.Write("Q0.5", false);
+                AddLog("绿灯亮");
+            }
+
+
         }
 
         private void button7_Click(object sender, EventArgs e)
         {
             btn_green.BackColor = Color.Silver;
+            plc.Write("Q0.5", false);
+            AddLog("绿灯灭");
         }
 
         private void button8_Click(object sender, EventArgs e)
         {
-            btn_yellow.BackColor = Color.Red;
+            //btn_yellow.BackColor = Color.Red;
+            plc.Write("Q1.1", false);
+            AddLog("黄灯亮");
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
             btn_yellow.BackColor = Color.Silver;
-
+            AddLog("黄灯灭");
         }
 
 
@@ -140,6 +191,30 @@ namespace Dl_FormsApp1 {
                 // 日志输出
                 logStr = $"{texBox_add_A.Text} + {texBox_add_B.Text} = {texBox_add_R.Text}";
                 CalcAddLog(logStr);
+                // texBox_add_R.Text值判断奇数，偶数，小数返回NumberEunm值
+                NumberEunm numberEunm = GetNumberType(Convert.ToDouble(texBox_add_R.Text));
+                // switch判断 奇数、偶数、小数 进行PLC灯亮
+                switch (numberEunm)
+                {
+                    case NumberEunm.odd_:
+                        plc.Write("Q1.1", true);
+                        plc.Write("Q0.4", false);
+                        plc.Write("Q0.5", false);
+                        break;
+                    case NumberEunm.decimal_:
+                        // 黄灯亮
+                        plc.Write("Q1.1", true);
+                        plc.Write("Q0.4", false);
+                        plc.Write("Q0.5", false);
+                        break;
+                    case NumberEunm.even_:
+                        plc.Write("Q0.5",true);
+                        plc.Write("Q1.1", false);
+                        plc.Write("Q0.4", false);
+                        break;
+                }
+
+
             }
             catch (Exception)
             {
@@ -152,6 +227,8 @@ namespace Dl_FormsApp1 {
             }
 
         }
+
+
 
 
         // 取余运算
@@ -275,15 +352,169 @@ namespace Dl_FormsApp1 {
                     greenLightOn();
                     break;
                 default:
-                    break;  
+                    break;
+            }
+        }
+
+        // 监控器扫描三色灯状态
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            // 读取PLC中的三色灯状态
+            // Q0.5 绿灯
+            bool greenLightFlag = Convert.ToBoolean(plc.Read("Q0.5"));
+            // Q0.4	红灯
+            bool redLightFlag = Convert.ToBoolean(plc.Read("Q0.4"));
+            // Q1.1 黄灯
+            bool yellowLightFlag = Convert.ToBoolean(plc.Read("Q1.1"));
+
+            // 根据PLC中的三色灯状态，设置界面中的三色灯状态
+            if (redLightFlag)
+            {
+                redLightOn();
+            }
+            if (greenLightFlag)
+            {
+                greenLightOn();
+            }
+
+            if (yellowLightFlag)
+            {
+                yellowLightOn();
+            }
+
+
+
+
+
+        }
+
+        private void button13_Click(object sender, EventArgs e)
+        {
+            // 由于PLC是盗版的，第一次连接可能会失败，所以需要重试
+            // 打开PLC连接
+            try
+            {
+                plc.Open();
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("PLC第一次连接失败");
+            }
+            finally
+            {
+                // 判断硬件是否连接成功
+                if (plc.IsConnected)
+                {
+                    // 设置按钮为红色 按钮提示词是运行中 并且不可以再次点击
+                    button13.BackColor = Color.Green;
+                    button13.Text = "PLC连接中";
+                    // 设置按钮不能点击
+                    button13.Enabled = false;
+                    MessageBox.Show("PLC连接成功");
+                }
+                else
+                {
+                    MessageBox.Show("PLC连接失败");
+                }
+            }
+
+
+        }
+
+
+
+        // 关闭PLC连接
+        private void button14_Click(object sender, EventArgs e)
+        {
+            // 关闭PLC连接
+            plc.Close();
+            // 弹窗提示
+            if (!plc.IsConnected)
+            {
+                MessageBox.Show("PLC已关闭");
+            }
+            // 恢复按钮状态
+            button13.BackColor = Color.DimGray;
+            button13.Text = "PLC连接";
+        }
+
+        private void btn_yellow_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        // 控制黄色灯按下亮
+        private void button8_MouseDown(object sender, MouseEventArgs e)
+        {
+            // 若是不在连接操作前 需要判断是否成功连接PLC 
+            if (!plc.IsConnected)
+            {
+                MessageBox.Show("请先连接PLC");
+                return;
+            }
+            plc.Write("Q1.1", true);
+        }
+
+        private void button8_MouseUp(object sender, MouseEventArgs e)
+        {
+            plc.Write("Q1.1", false);
+        }
+
+        private async void button12_Click(object sender, EventArgs e)
+        {
+
+            //检查plc是否连接
+            if (!plc.IsConnected)
+            {
+                MessageBox.Show("请先连接PLC");
+                return;
+            }
+
+            // 监控定时器
+            timer1.Enabled = !timer1.Enabled;
+            // 设置监控中
+            button12.Text = timer1.Enabled ? "停止监控" : "开始监控";
+            // 开始监控灰色 停止监控绿
+            button12.ForeColor = timer1.Enabled ? Color.BlanchedAlmond : Color.Gray;
+            // 设置背景颜色
+            button12.BackColor = timer1.Enabled ? Color.Green : Color.Silver;
+
+
+        }
+
+        private NumberEunm GetNumberType(double number)
+        {
+            // 判断是不是小数：小数部分不为0
+            if (number % 1 != 0)
+            {
+                return NumberEunm.decimal_;
+            }
+
+            long integerVal = (long)number;
+            if (integerVal % 2 != 0)
+            {
+                return NumberEunm.odd_;
+            }
+            else
+            {
+                return NumberEunm.even_;
             }
         }
     }
+
+
 
     // 灯亮枚举
     enum LightOnEunm {
         yellow_light_on,
         red_light_on,
         green_light_on
+    }
+
+    // 添加奇数 偶数 小数枚举类
+    enum NumberEunm {
+        odd_,
+        even_,
+        decimal_
     }
 }

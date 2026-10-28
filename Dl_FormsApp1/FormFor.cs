@@ -71,6 +71,10 @@ namespace Dl_FormsApp1 {
         bool isRunning = false;   // 新增：是否已经在跑
         private async void button3_Click(object sender, EventArgs e)
         {
+            if (!isRunning)
+            {
+                textBox1.Text += $"{whlieValue.ToString()},";
+            }
             if (isRunning) return;   // 正在跑就直接退出，不再开新循环
             isRunning = true;
             button3.Enabled = false;  // 顺手禁用按钮，物理上也点不了
@@ -97,6 +101,11 @@ namespace Dl_FormsApp1 {
                 whlieValue = 0;
             }
             flag = false;
+
+        }
+
+        private void FormFor_Load(object sender, EventArgs e)
+        {
 
         }
     }

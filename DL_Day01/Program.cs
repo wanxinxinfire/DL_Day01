@@ -12,15 +12,18 @@ namespace DL_Day01 {
 
         static void Main(string[] args)
         {
+            //#error version
+
             //InOut();
             //Console.WriteLine(Student.GetInfo());
+            BasicGrammar.Nullable(); 
 
 
             // 计算代码
-            Console.WriteLine(Calculator.Add(10, 20));
-            Console.WriteLine(Calculator.Sub(10, 20));
-            Console.WriteLine(Calculator.Mul(10, 20));
-            Console.WriteLine(Calculator.Div(10, 20));
+            //Console.WriteLine(Calculator.Add(10, 20));
+            //Console.WriteLine(Calculator.Sub(10, 20));
+            //Console.WriteLine(Calculator.Mul(10, 20));
+            //Console.WriteLine(Calculator.Div(10, 20));
 
         }
 

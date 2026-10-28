@@ -26,6 +26,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -65,6 +66,10 @@
             this.texBox_add_R = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.button11 = new System.Windows.Forms.Button();
+            this.button12 = new System.Windows.Forms.Button();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.button13 = new System.Windows.Forms.Button();
+            this.button14 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -180,6 +185,8 @@
             this.button8.Text = "启动";
             this.button8.UseVisualStyleBackColor = false;
             this.button8.Click += new System.EventHandler(this.button8_Click);
+            this.button8.MouseDown += new System.Windows.Forms.MouseEventHandler(this.button8_MouseDown);
+            this.button8.MouseUp += new System.Windows.Forms.MouseEventHandler(this.button8_MouseUp);
             // 
             // btn_green
             // 
@@ -202,6 +209,7 @@
             this.btn_yellow.TabIndex = 16;
             this.btn_yellow.Text = "黄灯";
             this.btn_yellow.UseVisualStyleBackColor = false;
+            this.btn_yellow.Click += new System.EventHandler(this.btn_yellow_Click);
             // 
             // textBox1
             // 
@@ -460,13 +468,56 @@
             this.button11.UseVisualStyleBackColor = false;
             this.button11.Click += new System.EventHandler(this.button11_Click);
             // 
-            // Home
+            // button12
+            // 
+            this.button12.BackColor = System.Drawing.Color.DimGray;
+            this.button12.Location = new System.Drawing.Point(473, 63);
+            this.button12.Name = "button12";
+            this.button12.Size = new System.Drawing.Size(116, 50);
+            this.button12.TabIndex = 44;
+            this.button12.Text = "指示灯监控";
+            this.button12.UseVisualStyleBackColor = false;
+            this.button12.Click += new System.EventHandler(this.button12_Click);
+            // 
+            // timer1
+            // 
+            this.timer1.Interval = 2000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // button13
+            // 
+            this.button13.BackColor = System.Drawing.Color.DimGray;
+            this.button13.ForeColor = System.Drawing.Color.Brown;
+            this.button13.Location = new System.Drawing.Point(473, 145);
+            this.button13.Name = "button13";
+            this.button13.Size = new System.Drawing.Size(116, 50);
+            this.button13.TabIndex = 45;
+            this.button13.Text = "连接PLC";
+            this.button13.UseVisualStyleBackColor = false;
+            this.button13.Click += new System.EventHandler(this.button13_Click);
+            // 
+            // button14
+            // 
+            this.button14.BackColor = System.Drawing.Color.Brown;
+            this.button14.ForeColor = System.Drawing.Color.Black;
+            this.button14.Location = new System.Drawing.Point(473, 222);
+            this.button14.Name = "button14";
+            this.button14.Size = new System.Drawing.Size(116, 54);
+            this.button14.TabIndex = 46;
+            this.button14.Text = "断开PLC";
+            this.button14.UseVisualStyleBackColor = false;
+            this.button14.Click += new System.EventHandler(this.button14_Click);
+            // 
+            // LightOn
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(1161, 759);
+            this.Controls.Add(this.button14);
+            this.Controls.Add(this.button13);
+            this.Controls.Add(this.button12);
             this.Controls.Add(this.button11);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.texBox_div_R);
@@ -508,7 +559,7 @@
             this.Controls.Add(this.button1);
             this.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Name = "Home";
+            this.Name = "LightOn";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
@@ -557,6 +608,10 @@
         public System.Windows.Forms.Button button3;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Button button11;
+        private System.Windows.Forms.Button button12;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Button button13;
+        private System.Windows.Forms.Button button14;
     }
 }
 
