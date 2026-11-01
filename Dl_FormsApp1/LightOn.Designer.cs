@@ -72,7 +72,6 @@
             this.button14 = new System.Windows.Forms.Button();
             this.button15 = new System.Windows.Forms.Button();
             this.button16 = new System.Windows.Forms.Button();
-            this.button17 = new System.Windows.Forms.Button();
             this.button18 = new System.Windows.Forms.Button();
             this.button19 = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -166,6 +165,7 @@
             this.btn_red.TabIndex = 12;
             this.btn_red.Text = "红灯";
             this.btn_red.UseVisualStyleBackColor = false;
+            this.btn_red.Click += new System.EventHandler(this.btn_red_Click);
             // 
             // button2
             // 
@@ -535,15 +535,6 @@
             this.button16.UseVisualStyleBackColor = false;
             this.button16.Click += new System.EventHandler(this.button16_Click);
             // 
-            // button17
-            // 
-            this.button17.Location = new System.Drawing.Point(0, 0);
-            this.button17.Name = "button17";
-            this.button17.Size = new System.Drawing.Size(75, 23);
-            this.button17.TabIndex = 49;
-            this.button17.Text = "button17";
-            this.button17.UseVisualStyleBackColor = true;
-            // 
             // button18
             // 
             this.button18.BackColor = System.Drawing.Color.Lime;
@@ -575,7 +566,6 @@
             this.ClientSize = new System.Drawing.Size(1161, 759);
             this.Controls.Add(this.button19);
             this.Controls.Add(this.button18);
-            this.Controls.Add(this.button17);
             this.Controls.Add(this.button16);
             this.Controls.Add(this.button15);
             this.Controls.Add(this.button14);
@@ -677,7 +667,6 @@
         private System.Windows.Forms.Button button14;
         private System.Windows.Forms.Button button15;
         private System.Windows.Forms.Button button16;
-        private System.Windows.Forms.Button button17;
         private System.Windows.Forms.Button button18;
         private System.Windows.Forms.Button button19;
     }

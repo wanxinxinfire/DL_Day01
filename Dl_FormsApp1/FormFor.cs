@@ -85,11 +85,14 @@ namespace Dl_FormsApp1 {
                 whlieValue++;
                 textBox1.Text += $"{whlieValue.ToString()},";
                 await Task.Delay(100);
+
             }
 
             // 循环被 button4 停掉后，恢复状态
             isRunning = false;
             button3.Enabled = true;
+
+            
         }
 
         private void button4_Click(object sender, EventArgs e)

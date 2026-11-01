@@ -112,13 +112,14 @@ namespace Dl_FormsApp1 {
         private void button8_Click(object sender, EventArgs e)
         {
             //btn_yellow.BackColor = Color.Red;
-            plc.Write("Q1.1", false);
+            plc.Write("Q1.1", true);
             AddLog("黄灯亮");
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            btn_yellow.BackColor = Color.Silver;
+            //btn_yellow.BackColor = Color.Silver;
+            plc.Write("Q1.1", false);
             AddLog("黄灯灭");
         }
 
@@ -460,7 +461,7 @@ namespace Dl_FormsApp1 {
             plc.Write("Q1.1", false);
         }
 
-        private void button12_Click(object sender, EventArgs e)
+        private  void button12_Click(object sender, EventArgs e)
         {
 
             //检查plc是否连接
@@ -471,6 +472,7 @@ namespace Dl_FormsApp1 {
             }
 
             // 监控定时器
+            //timer1.Start();
             timer1.Enabled = !timer1.Enabled;
             // 设置监控中
             button12.Text = timer1.Enabled ? "停止监控" : "开始监控";
@@ -484,9 +486,9 @@ namespace Dl_FormsApp1 {
 
         private void button15_Click(object sender, EventArgs e)
         {
-            yellowLightFlag = false;
+            btn16 = false;
             // 设置PLC黄灯关闭
-            plc.Write(EnumExtension.GetPlcAddress(PlcLightEnum.Yellow), false);
+            plc.Write("Q1.1", false);
         }
 
         private NumberEunm GetNumberType(double number)
@@ -508,23 +510,43 @@ namespace Dl_FormsApp1 {
             }
         }
 
-        // 定义黄灯闪烁按钮状态成员变量
-        private bool yellowLightFlag = false;
+
 
         // 1. 点击开始按钮  黄灯200ms 闪烁     点击停止按钮  闪烁停止 
+
+        bool btn16 = false;
         private async void button16_Click(object sender, EventArgs e)
         {
-            // 判断PLC是否
-            if (!checkPlcOpen())
+            //if (!btn16)
+            //{
+            //    btn16 = false;
+            //}
+            //else {
+            //    MessageBox.Show("请勿重复点击");
+            //    return;
+            //}
+            //// 判断PLC是否
+            //if (!checkPlcOpen())
+            //{
+            //    return;
+            //}
+            // 
+
+            if (btn16)
             {
                 return;
             }
+            btn16 = true;
+
             // 设置闪烁
-            while (!yellowLightFlag)
+            while (btn16)
             {
                 plc.Write("Q1.1", true);
-                await Task.Delay(200);
+                await Task.Delay(1000);
+                plc.Write("Q1.1", false);
+                await Task.Delay(1000);
             }
+
         }
 
         // 设置黄灯闪烁变量值
@@ -536,24 +558,72 @@ namespace Dl_FormsApp1 {
         //然后一直循环 直到点击停止按钮。所有灯全部熄灭
         private async void button18_Click(object sender, EventArgs e)
         {
-            //写一个红绿灯按钮 红灯亮3秒
-            plc.Write(EnumExtension.GetPlcAddress(PlcLightEnum.Red), true);
-            await Task.Delay(3000);
-            plc.Write(EnumExtension.GetPlcAddress(PlcLightEnum.Red), false);
-            //然后绿灯亮三秒 然后黄灯闪烁
-            plc.Write(EnumExtension.GetPlcAddress(PlcLightEnum.Green), true);
-            await Task.Delay(3000);
-            plc.Write(EnumExtension.GetPlcAddress(PlcLightEnum.Green), false);
-            while (!yellowLightFlashingFlag)
+            // 判断是否正在执行
+            if (yellowLightFlashingFlag)
             {
-                plc.Write(EnumExtension.GetPlcAddress(PlcLightEnum.Yellow), true);
-                await Task.Delay(1000);
+                return;
             }
+            yellowLightFlashingFlag = true;
+
+            // 使用页面按钮颜色改变
+            btn_red.BackColor = Color.Red;
+            await Task.Delay(3000);
+            btn_red.BackColor = Color.Silver;
+
+            btn_green.BackColor = Color.Green;
+            await Task.Delay(3000);
+            btn_green.BackColor = Color.Silver;
+
+            while (yellowLightFlashingFlag)
+            {
+                btn_yellow.BackColor = Color.Yellow;
+                await Task.Delay(1000);
+                btn_yellow.BackColor = Color.Silver;
+                await Task.Delay(1000);
+
+            }
+            ////写一个红绿灯按钮 红灯亮3秒
+            //plc.Write(EnumExtension.GetPlcAddress(PlcLightEnum.Red), true);
+            //await Task.Delay(3000);
+            //plc.Write(EnumExtension.GetPlcAddress(PlcLightEnum.Red), false);
+            ////然后绿灯亮三秒 然后黄灯闪烁
+            //plc.Write(EnumExtension.GetPlcAddress(PlcLightEnum.Green), true);
+            //await Task.Delay(3000);
+            //plc.Write(EnumExtension.GetPlcAddress(PlcLightEnum.Green), false);
+            //while (yellowLightFlashingFlag)
+            //{
+            //    plc.Write(EnumExtension.GetPlcAddress(PlcLightEnum.Yellow), true);
+            //    await Task.Delay(1000);
+            //    plc.Write(EnumExtension.GetPlcAddress(PlcLightEnum.Yellow), false);
+            //    await Task.Delay(1000);
+            //}
             //然后一直循环 直到点击停止按钮。所有灯全部熄灭
 
         }
 
 
+        private void button19_Click(object sender, EventArgs e)
+        {
+            yellowLightFlashingFlag = false;
+            // 页面测试
+            btn_yellow.BackColor = Color.Silver;
+            btn_green.BackColor = Color.Silver;
+            btn_red.BackColor = Color.Silver;
+            //plc.Write(EnumExtension.GetPlcAddress(PlcLightEnum.Red), false);
+            //plc.Write(EnumExtension.GetPlcAddress(PlcLightEnum.Yellow), false);
+            //plc.Write(EnumExtension.GetPlcAddress(PlcLightEnum.Green), false);
+        }
+
+        private void btn_red_Click(object sender, EventArgs e)
+        {
+
+        }
+    }
+
+    /// <summary>
+    /// 枚举扩展【独立静态类，存放扩展方法，解决 CS1106】
+    /// </summary>
+    public static class EnumExtension {
         /// <summary>
         /// 获取枚举上Description字符串
         /// </summary>
@@ -566,13 +636,6 @@ namespace Dl_FormsApp1 {
                 return attrs[0].Description;
             }
             return "";
-        }
-
-        private void button19_Click(object sender, EventArgs e)
-        {
-            plc.Write(EnumExtension.GetPlcAddress(PlcLightEnum.Red), false);
-            plc.Write(EnumExtension.GetPlcAddress(PlcLightEnum.Yellow), false);
-            plc.Write(EnumExtension.GetPlcAddress(PlcLightEnum.Green), false);
         }
     }
 

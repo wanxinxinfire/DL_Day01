@@ -1,4 +1,5 @@
 ﻿using DL_Day01;
+using DL_Day03_Stepper_Axis;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,16 +15,19 @@ namespace Dl_FormsApp1 {
         public FormMain()
         {
             InitializeComponent();
+            // ↓↓↓ 关键：设计器模式下直接返回，不跑任何运行时逻辑 ↓↓↓
+            if (this.DesignMode) return;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-         
-            // 创建登录窗体
+
+            // 展示登录窗体
             Login login = new Login();
             panellAdd(login);
         }
 
+        // 点击展示登录窗体
         private void button2_Click(object sender, EventArgs e)
         {
             // 创建登录窗体
@@ -51,11 +55,25 @@ namespace Dl_FormsApp1 {
             panel1.Controls.Add(form);
         }
 
+        // 点击展示FormFor窗体
         private void button3_Click(object sender, EventArgs e)
         {
             // 创建窗体
             FormFor formFor = new FormFor();
             panellAdd(formFor);
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            // 创建窗体
+            FormAxis formFor = new FormAxis();
+            panellAdd(formFor);
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+            // 设计器模式下直接返回，下面的运行时代码设计器不执行
+            if (DesignMode) return;
         }
     }
 }
