@@ -32,13 +32,14 @@
             this.label3 = new System.Windows.Forms.Label();
             this.txt_account = new System.Windows.Forms.TextBox();
             this.txt_password = new System.Windows.Forms.TextBox();
+            this.btn_go_register = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
             // 
-            this.button1.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.button1.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.button1.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.button1.Location = new System.Drawing.Point(342, 317);
+            this.button1.Location = new System.Drawing.Point(244, 317);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(121, 31);
             this.button1.TabIndex = 0;
@@ -89,11 +90,24 @@
             this.txt_password.TabIndex = 5;
             this.txt_password.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
+            // btn_go_register
+            // 
+            this.btn_go_register.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btn_go_register.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.btn_go_register.Location = new System.Drawing.Point(441, 317);
+            this.btn_go_register.Name = "btn_go_register";
+            this.btn_go_register.Size = new System.Drawing.Size(121, 31);
+            this.btn_go_register.TabIndex = 6;
+            this.btn_go_register.Text = "去注册";
+            this.btn_go_register.UseVisualStyleBackColor = false;
+            this.btn_go_register.Click += new System.EventHandler(this.btn_go_register_Click);
+            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btn_go_register);
             this.Controls.Add(this.txt_password);
             this.Controls.Add(this.txt_account);
             this.Controls.Add(this.label3);
@@ -103,6 +117,7 @@
             this.Name = "Login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
+            this.Load += new System.EventHandler(this.Login_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -116,5 +131,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txt_account;
         private System.Windows.Forms.TextBox txt_password;
+        private System.Windows.Forms.Button btn_go_register;
     }
 }

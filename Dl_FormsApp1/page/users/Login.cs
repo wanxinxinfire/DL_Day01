@@ -1,9 +1,11 @@
-﻿using System;
+﻿using Dl_FormsApp1.page;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Resources;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -42,6 +44,24 @@ namespace Dl_FormsApp1 {
             LightOn home = new LightOn();
             this.Hide();
             home.Show();
+            
+        }
+
+
+
+        // 去注册
+        private void btn_go_register_Click(object sender, EventArgs e)
+        {
+            // 去注册页面
+            Registr registr = new Registr();
+            registr.Show();
+            this.Hide();
+
+        }
+
+        private void Login_Load(object sender, EventArgs e)
+        {
+           
         }
     }
 }

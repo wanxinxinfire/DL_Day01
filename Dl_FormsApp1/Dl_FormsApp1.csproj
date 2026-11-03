@@ -81,16 +81,20 @@
   <ItemGroup>
     <Compile Include="axis\AxisAddressPool.cs" />
     <Compile Include="axis\AxisLocation.cs" />
-    <Compile Include="FormAxis.cs">
+    <Compile Include="beautify\IconButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="common\PageUtils.cs" />
+    <Compile Include="page\FormAxis.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormAxis.Designer.cs">
+    <Compile Include="page\FormAxis.Designer.cs">
       <DependentUpon>FormAxis.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormFor.cs">
+    <Compile Include="page\FormFor.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormFor.Designer.cs">
+    <Compile Include="page\FormFor.Designer.cs">
       <DependentUpon>FormFor.cs</DependentUpon>
     </Compile>
     <Compile Include="FormMain.cs">
@@ -99,35 +103,54 @@
     <Compile Include="FormMain.Designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="LightOn.cs">
+    <Compile Include="page\LightOn.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="LightOn.Designer.cs">
+    <Compile Include="page\LightOn.Designer.cs">
       <DependentUpon>LightOn.cs</DependentUpon>
     </Compile>
-    <Compile Include="Login.cs">
+    <Compile Include="page\users\Login.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Login.Designer.cs">
+    <Compile Include="page\users\Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="page\FormTreeView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="page\FormTreeView.Designer.cs">
+      <DependentUpon>FormTreeView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="page\users\Registr.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="page\users\Registr.Designer.cs">
+      <DependentUpon>Registr.cs</DependentUpon>
     </Compile>
     <Compile Include="PlcHelper.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="FormAxis.resx">
+    <Compile Include="user\UserInfo.cs" />
+    <EmbeddedResource Include="page\FormAxis.resx">
       <DependentUpon>FormAxis.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormFor.resx">
+    <EmbeddedResource Include="page\FormFor.resx">
       <DependentUpon>FormFor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="LightOn.resx">
+    <EmbeddedResource Include="page\LightOn.resx">
       <DependentUpon>LightOn.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Login.resx">
+    <EmbeddedResource Include="page\users\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="page\FormTreeView.resx">
+      <DependentUpon>FormTreeView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="page\users\Registr.resx">
+      <DependentUpon>Registr.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -137,6 +160,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

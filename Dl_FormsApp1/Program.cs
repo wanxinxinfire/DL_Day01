@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Dl_FormsApp1.page;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -14,7 +15,7 @@ namespace Dl_FormsApp1 {
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormMain());
+            Application.Run(new FormTreeView());
         }
     }
 }
