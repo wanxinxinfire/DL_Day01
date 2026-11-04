@@ -43,7 +43,7 @@ namespace Dl_FormsApp1.page {
             {
                 plc_status_lab.Text = "PLC 状态：未连接";
                 // 为连接状态下设置为 00:00:00
-                plc_open_time.Text = "00:00:00";
+                plc_open_time.Text = "连接时长: 00:00:00";
             }
         }
         #region 菜单按钮展示下级菜单
@@ -81,16 +81,6 @@ namespace Dl_FormsApp1.page {
                 {
                     PageType pageType = PageUtils.GetPageType(formName);
                     Form form = PageUtils.getFormPage(pageType);
-                    // 判断页面是否存在plc属性
-                    if (form.GetType().GetProperty("plc") != null)
-                    {
-                        // 添加plc属性
-                        form.GetType().GetProperty("plc").SetValue(form, plcHelper.plc);
-                    }else
-                    {
-                        // 添加plcHelper属性
-                        form.GetType().GetProperty("plcHelper").SetValue(form, plcHelper);
-                    }
                     // 添加页面
                     PageUtils.panellAdd(form, panel1);
                 }
@@ -112,20 +102,30 @@ namespace Dl_FormsApp1.page {
                 // 写PLC 断开连接操作 断开成功按钮 改为连接
                 plcHelper.stopPlc();
                 plc_status_lab.Text = "PLC 状态：未连接";
-                plc_open_time.Text = "00:00:00";
+                plc_open_time.Text = "连接时长: 00:00:00";
                 ConnectStartTime = null;
+                btn_plc.Text = "连接";
+                // 定时任务停止
+                timer1.Stop();
             }
             else
             {
                 plcHelper.startUpPlc();
                 if (plcHelper.isPlcConnect())
                 {
+                    btn_plc.Text = "断开";
                     plc_status_lab.Text = "PLC 状态：已连接";
                     ConnectStartTime = DateTime.Now;
-                    plc_open_time.Text = DateTime.Now.Subtract(ConnectStartTime.Value).ToString("HH:mm:ss");
+                    plc_open_time.Text = ("连接时长: " + DateTime.Now.Subtract(ConnectStartTime.Value).ToString(@"hh\:mm\:ss"));
+                    timer1.Start();
                 }
-                
+
             }
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            plc_open_time.Text = "连接时长: " + DateTime.Now.Subtract(ConnectStartTime.Value).ToString(@"hh\:mm\:ss");
         }
     }
 }

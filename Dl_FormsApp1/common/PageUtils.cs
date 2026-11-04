@@ -1,6 +1,7 @@
 ﻿using DL_Day03_Stepper_Axis;
 using Dl_FormsApp1.page;
 using Dl_FormsApp1.string_demo;
+using S7.Net;
 using System;
 using System.Collections.Generic;
 using System.Drawing;

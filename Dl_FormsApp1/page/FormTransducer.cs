@@ -11,18 +11,14 @@ using System.Windows.Forms;
 
 namespace Dl_FormsApp1.page {
     public partial class FormTransducer : UIForm {
+
+        private readonly PlcHelper plcHelper;
         public FormTransducer()
         {
+
             InitializeComponent();
+            //plcHelper = plc;
         }
-
-        // 设置PLC连接对象属性
-        private PlcHelper plcHelper;
-
-        //public FormTransducer(PlcHelper plc)
-        //{
-        //    plcHelper = plc;
-        //}
 
         // 按下设置频率
         private void button1_MouseDown(object sender, MouseEventArgs e)

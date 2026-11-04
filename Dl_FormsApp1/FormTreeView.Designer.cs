@@ -32,34 +32,35 @@ namespace Dl_FormsApp1.page {
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("三色灯");
-            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("For");
-            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("步进器");
-            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("登录");
-            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("注册");
-            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("变频器");
-            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("基础功能", new System.Windows.Forms.TreeNode[] {
-            treeNode1,
-            treeNode2,
-            treeNode3,
-            treeNode4,
-            treeNode5,
-            treeNode6});
-            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("压力数据格式化输出");
-            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("IP格式化");
-            System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("数组练习");
-            System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("Day1102", new System.Windows.Forms.TreeNode[] {
-            treeNode8,
-            treeNode9,
-            treeNode10});
-            System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("字符串运用");
-            System.Windows.Forms.TreeNode treeNode13 = new System.Windows.Forms.TreeNode("通用窗体Test");
-            System.Windows.Forms.TreeNode treeNode14 = new System.Windows.Forms.TreeNode("Day1103", new System.Windows.Forms.TreeNode[] {
-            treeNode12,
-            treeNode13});
-            System.Windows.Forms.TreeNode treeNode15 = new System.Windows.Forms.TreeNode("课后练习", new System.Windows.Forms.TreeNode[] {
-            treeNode11,
-            treeNode14});
+            this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.TreeNode treeNode76 = new System.Windows.Forms.TreeNode("三色灯");
+            System.Windows.Forms.TreeNode treeNode77 = new System.Windows.Forms.TreeNode("For");
+            System.Windows.Forms.TreeNode treeNode78 = new System.Windows.Forms.TreeNode("步进器");
+            System.Windows.Forms.TreeNode treeNode79 = new System.Windows.Forms.TreeNode("登录");
+            System.Windows.Forms.TreeNode treeNode80 = new System.Windows.Forms.TreeNode("注册");
+            System.Windows.Forms.TreeNode treeNode81 = new System.Windows.Forms.TreeNode("变频器");
+            System.Windows.Forms.TreeNode treeNode82 = new System.Windows.Forms.TreeNode("基础功能", new System.Windows.Forms.TreeNode[] {
+            treeNode76,
+            treeNode77,
+            treeNode78,
+            treeNode79,
+            treeNode80,
+            treeNode81});
+            System.Windows.Forms.TreeNode treeNode83 = new System.Windows.Forms.TreeNode("压力数据格式化输出");
+            System.Windows.Forms.TreeNode treeNode84 = new System.Windows.Forms.TreeNode("IP格式化");
+            System.Windows.Forms.TreeNode treeNode85 = new System.Windows.Forms.TreeNode("数组练习");
+            System.Windows.Forms.TreeNode treeNode86 = new System.Windows.Forms.TreeNode("Day1102", new System.Windows.Forms.TreeNode[] {
+            treeNode83,
+            treeNode84,
+            treeNode85});
+            System.Windows.Forms.TreeNode treeNode87 = new System.Windows.Forms.TreeNode("字符串运用");
+            System.Windows.Forms.TreeNode treeNode88 = new System.Windows.Forms.TreeNode("通用窗体Test");
+            System.Windows.Forms.TreeNode treeNode89 = new System.Windows.Forms.TreeNode("Day1103", new System.Windows.Forms.TreeNode[] {
+            treeNode87,
+            treeNode88});
+            System.Windows.Forms.TreeNode treeNode90 = new System.Windows.Forms.TreeNode("课后练习", new System.Windows.Forms.TreeNode[] {
+            treeNode86,
+            treeNode89});
             this.tree_view_manu = new System.Windows.Forms.Panel();
             this.uiTreeView1 = new Sunny.UI.UITreeView();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -68,6 +69,8 @@ namespace Dl_FormsApp1.page {
             this.plc_open_time = new Sunny.UI.UILabel();
             this.plc_status_lab = new Sunny.UI.UILabel();
             this.uiLabel1 = new Sunny.UI.UILabel();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.tree_view_manu.SuspendLayout();
             this.uiPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -94,51 +97,51 @@ namespace Dl_FormsApp1.page {
             this.uiTreeView1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uiTreeView1.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiTreeView1.Name = "uiTreeView1";
-            treeNode1.Name = "节点1";
-            treeNode1.Tag = "LightOn";
-            treeNode1.Text = "三色灯";
-            treeNode2.Name = "节点2";
-            treeNode2.Tag = "FormFor";
-            treeNode2.Text = "For";
-            treeNode3.Checked = true;
-            treeNode3.Name = "节点4";
-            treeNode3.Tag = "FormAxis";
-            treeNode3.Text = "步进器";
-            treeNode4.Name = "节点0";
-            treeNode4.Tag = "Login";
-            treeNode4.Text = "登录";
-            treeNode5.Name = "节点1";
-            treeNode5.Tag = "Registr";
-            treeNode5.Text = "注册";
-            treeNode6.Name = "节点0";
-            treeNode6.Tag = "FormTransducer";
-            treeNode6.Text = "变频器";
-            treeNode7.Name = "节点0";
-            treeNode7.Text = "基础功能";
-            treeNode8.Name = "节点1";
-            treeNode8.Tag = "FormFormat";
-            treeNode8.Text = "压力数据格式化输出";
-            treeNode9.Name = "节点0";
-            treeNode9.Tag = "FormIPFormat";
-            treeNode9.Text = "IP格式化";
-            treeNode10.Name = "节点1";
-            treeNode10.Tag = "FormArray";
-            treeNode10.Text = "数组练习";
-            treeNode11.Name = "节点0";
-            treeNode11.Text = "Day1102";
-            treeNode12.Name = "节点2";
-            treeNode12.Tag = "FormString";
-            treeNode12.Text = "字符串运用";
-            treeNode13.Name = "节点0";
-            treeNode13.Tag = "FormStringCommTest";
-            treeNode13.Text = "通用窗体Test";
-            treeNode14.Name = "节点1";
-            treeNode14.Text = "Day1103";
-            treeNode15.Name = "节点0";
-            treeNode15.Text = "课后练习";
+            treeNode76.Name = "节点1";
+            treeNode76.Tag = "LightOn";
+            treeNode76.Text = "三色灯";
+            treeNode77.Name = "节点2";
+            treeNode77.Tag = "FormFor";
+            treeNode77.Text = "For";
+            treeNode78.Checked = true;
+            treeNode78.Name = "节点4";
+            treeNode78.Tag = "FormAxis";
+            treeNode78.Text = "步进器";
+            treeNode79.Name = "节点0";
+            treeNode79.Tag = "Login";
+            treeNode79.Text = "登录";
+            treeNode80.Name = "节点1";
+            treeNode80.Tag = "Registr";
+            treeNode80.Text = "注册";
+            treeNode81.Name = "节点0";
+            treeNode81.Tag = "FormTransducer";
+            treeNode81.Text = "变频器";
+            treeNode82.Name = "节点0";
+            treeNode82.Text = "基础功能";
+            treeNode83.Name = "节点1";
+            treeNode83.Tag = "FormFormat";
+            treeNode83.Text = "压力数据格式化输出";
+            treeNode84.Name = "节点0";
+            treeNode84.Tag = "FormIPFormat";
+            treeNode84.Text = "IP格式化";
+            treeNode85.Name = "节点1";
+            treeNode85.Tag = "FormArray";
+            treeNode85.Text = "数组练习";
+            treeNode86.Name = "节点0";
+            treeNode86.Text = "Day1102";
+            treeNode87.Name = "节点2";
+            treeNode87.Tag = "FormString";
+            treeNode87.Text = "字符串运用";
+            treeNode88.Name = "节点0";
+            treeNode88.Tag = "FormStringCommTest";
+            treeNode88.Text = "通用窗体Test";
+            treeNode89.Name = "节点1";
+            treeNode89.Text = "Day1103";
+            treeNode90.Name = "节点0";
+            treeNode90.Text = "课后练习";
             this.uiTreeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode7,
-            treeNode15});
+            treeNode82,
+            treeNode90});
             this.uiTreeView1.ScrollBarStyleInherited = false;
             this.uiTreeView1.ShowText = false;
             this.uiTreeView1.Size = new System.Drawing.Size(250, 753);
@@ -193,9 +196,9 @@ namespace Dl_FormsApp1.page {
             this.plc_open_time.BackColor = System.Drawing.Color.Transparent;
             this.plc_open_time.Font = new System.Drawing.Font("宋体", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.plc_open_time.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.plc_open_time.Location = new System.Drawing.Point(976, 60);
+            this.plc_open_time.Location = new System.Drawing.Point(947, 60);
             this.plc_open_time.Name = "plc_open_time";
-            this.plc_open_time.Size = new System.Drawing.Size(116, 24);
+            this.plc_open_time.Size = new System.Drawing.Size(237, 24);
             this.plc_open_time.TabIndex = 2;
             this.plc_open_time.Text = "连接时长:";
             // 
@@ -204,7 +207,7 @@ namespace Dl_FormsApp1.page {
             this.plc_status_lab.BackColor = System.Drawing.Color.Transparent;
             this.plc_status_lab.Font = new System.Drawing.Font("宋体", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.plc_status_lab.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.plc_status_lab.Location = new System.Drawing.Point(804, 60);
+            this.plc_status_lab.Location = new System.Drawing.Point(776, 60);
             this.plc_status_lab.Name = "plc_status_lab";
             this.plc_status_lab.Size = new System.Drawing.Size(116, 24);
             this.plc_status_lab.TabIndex = 1;
@@ -220,6 +223,10 @@ namespace Dl_FormsApp1.page {
             this.uiLabel1.Size = new System.Drawing.Size(200, 48);
             this.uiLabel1.TabIndex = 0;
             this.uiLabel1.Text = "上位机系统";
+            // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // FormTreeView
             // 
@@ -245,6 +252,8 @@ namespace Dl_FormsApp1.page {
         private Sunny.UI.UITreeView uiTreeView1;
         private Sunny.UI.UILabel plc_open_time;
         private Sunny.UI.UIButton btn_plc;
+        private Timer timer1;
+        private Timer timer2;
     }
 
 }
