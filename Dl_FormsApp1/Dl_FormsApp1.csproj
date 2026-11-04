@@ -84,7 +84,11 @@
     <Compile Include="beautify\IconButton.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="common\IpUtils.cs" />
+    <Compile Include="common\LogHeper.cs" />
+    <Compile Include="common\LogHepler.cs" />
     <Compile Include="common\PageUtils.cs" />
+    <Compile Include="common\TransducerPools.cs" />
     <Compile Include="page\FormAxis.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -103,6 +107,12 @@
     <Compile Include="FormMain.Designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="page\FormTransducer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="page\FormTransducer.Designer.cs">
+      <DependentUpon>FormTransducer.cs</DependentUpon>
+    </Compile>
     <Compile Include="page\LightOn.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -115,10 +125,10 @@
     <Compile Include="page\users\Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
-    <Compile Include="page\FormTreeView.cs">
+    <Compile Include="FormTreeView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="page\FormTreeView.Designer.cs">
+    <Compile Include="FormTreeView.Designer.cs">
       <DependentUpon>FormTreeView.cs</DependentUpon>
     </Compile>
     <Compile Include="page\users\Registr.cs">
@@ -130,6 +140,36 @@
     <Compile Include="PlcHelper.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="string_demo\FormArray.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="string_demo\FormArray.Designer.cs">
+      <DependentUpon>FormArray.cs</DependentUpon>
+    </Compile>
+    <Compile Include="string_demo\FormFormat.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="string_demo\FormFormat.Designer.cs">
+      <DependentUpon>FormFormat.cs</DependentUpon>
+    </Compile>
+    <Compile Include="string_demo\FormIPFormat.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="string_demo\FormIPFormat.Designer.cs">
+      <DependentUpon>FormIPFormat.cs</DependentUpon>
+    </Compile>
+    <Compile Include="string_demo\FormString.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="string_demo\FormString.Designer.cs">
+      <DependentUpon>FormString.cs</DependentUpon>
+    </Compile>
+    <Compile Include="string_demo\FormStringCommTest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="string_demo\FormStringCommTest.Designer.cs">
+      <DependentUpon>FormStringCommTest.cs</DependentUpon>
+    </Compile>
     <Compile Include="user\UserInfo.cs" />
     <EmbeddedResource Include="page\FormAxis.resx">
       <DependentUpon>FormAxis.cs</DependentUpon>
@@ -140,13 +180,16 @@
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="page\FormTransducer.resx">
+      <DependentUpon>FormTransducer.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="page\LightOn.resx">
       <DependentUpon>LightOn.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="page\users\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="page\FormTreeView.resx">
+    <EmbeddedResource Include="FormTreeView.resx">
       <DependentUpon>FormTreeView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="page\users\Registr.resx">
@@ -162,6 +205,21 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="string_demo\FormArray.resx">
+      <DependentUpon>FormArray.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="string_demo\FormFormat.resx">
+      <DependentUpon>FormFormat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="string_demo\FormIPFormat.resx">
+      <DependentUpon>FormIPFormat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="string_demo\FormString.resx">
+      <DependentUpon>FormString.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="string_demo\FormStringCommTest.resx">
+      <DependentUpon>FormStringCommTest.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

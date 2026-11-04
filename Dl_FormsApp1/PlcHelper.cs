@@ -32,8 +32,8 @@ namespace Dl_FormsApp1 {
                 plc = new SiemensS7Net(HslCommunication.Profinet.Siemens.SiemensPLCS.S200Smart);
                 plc.CommunicationPipe = new HslCommunication.Core.Pipe.PipeTcpNet("192.168.0.2", 102)
                 {
-                    ConnectTimeOut = 5000,    // 连接超时时间，单位毫秒
-                    ReceiveTimeOut = 10000,    // 接收设备数据反馈的超时时间
+                    ConnectTimeOut = 1000,    // 连接超时时间，单位毫秒
+                    ReceiveTimeOut = 1000,    // 接收设备数据反馈的超时时间
                     SleepTime = 0,
                     SocketKeepAliveTime = -1,
                     IsPersistentConnection = true,

@@ -1,5 +1,6 @@
 ﻿using DL_Day03_Stepper_Axis;
 using Dl_FormsApp1.page;
+using Dl_FormsApp1.string_demo;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -16,14 +17,31 @@ namespace Dl_FormsApp1.common {
     ///
     public static class PageUtils {
 
+        // plc
+        //public static PlcHelper plcHelper = new PlcHelper();
+
         // 定义页面
         public static readonly Dictionary<PageType, Form> PageTypeMap = new Dictionary<PageType, Form>()
         {
+            // 步进机
             { PageType.FormAxis, new FormAxis() },
+            // for循环
             { PageType.FormFor, new FormFor() },
+            // 三色灯
             { PageType.LightOn, new LightOn() },
+            // 登录
             { PageType.Login, new Login() },
+            // 注册
             { PageType.Registr, new Registr() },
+
+
+            // 课后练习作业
+            { PageType.FormFormat, new FormFormat() },
+            { PageType.FormArray, new FormArray() },
+            { PageType.FormIPFormat, new FormIPFormat() },
+            { PageType.FormString, new FormString() },
+            { PageType.FormStringCommTest, new FormStringCommTest() },
+            { PageType.FormTransducer, new FormTransducer() },
         };
 
 
@@ -56,7 +74,7 @@ namespace Dl_FormsApp1.common {
 
             // 设置窗体的填充属性 取消窗体等级 允许被添加到panell容器中
             form.TopLevel = false;
-            //form.Dock = DockStyle.Fill;
+            form.Dock = DockStyle.Fill;
             // 设置窗体的边框属性
             form.FormBorderStyle = FormBorderStyle.None;
 
@@ -98,4 +116,15 @@ public enum PageType {
     Login,
     // 注册
     Registr,
+    // 变频器
+    FormTransducer,
+
+
+    // 课后练习作业
+    FormArray,
+    FormFormat,
+    FormIPFormat,
+    FormString,
+    // 通用测试窗体
+    FormStringCommTest,
 }

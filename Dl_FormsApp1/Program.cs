@@ -1,4 +1,5 @@
 ﻿using Dl_FormsApp1.page;
+using Dl_FormsApp1.string_demo;
 using System;
 using System.Collections.Generic;
 using System.Linq;

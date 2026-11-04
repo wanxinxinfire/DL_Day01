@@ -1,5 +1,6 @@
 ﻿using Dl_FormsApp1;
 using HslCommunication;
+using S7.Net;
 using Sunny.UI;
 using System;
 using System.Collections.Generic;
@@ -15,15 +16,31 @@ using System.Windows.Forms;
 
 namespace DL_Day03_Stepper_Axis {
     public partial class FormAxis : Form {
+
+        private PlcHelper plcHelper { get; set; }
+
+        //// 构造函数
+        //private FormAxis(PlcHelper plc)
+        //{
+
+        //}
+
+        private FormAxis(PlcHelper plc)
+        {
+            InitializeComponent();
+            if (DesignMode) return;
+            plcHelper = plc;
+        }
+
         public FormAxis()
         {
             InitializeComponent();
             if (DesignMode) return;
-            plcHelper = new PlcHelper();
         }
 
+
         // 定义PLC操作对象
-        PlcHelper plcHelper;
+
 
         // 定义选中的轴
         int selectAxis;
