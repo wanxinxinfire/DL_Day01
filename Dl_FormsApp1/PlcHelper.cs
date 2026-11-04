@@ -23,14 +23,14 @@ namespace Dl_FormsApp1 {
 
        
         // 启动PLC
-        public void startUpPlc()
+        public void startUpPlc(string ip)
         {
             // 由于PLC是盗版的，第一次连接可能会失败，所以需要重试
             // 打开PLC连接
             try
             {
                 plc = new SiemensS7Net(HslCommunication.Profinet.Siemens.SiemensPLCS.S200Smart);
-                plc.CommunicationPipe = new HslCommunication.Core.Pipe.PipeTcpNet("192.168.0.2", 102)
+                plc.CommunicationPipe = new HslCommunication.Core.Pipe.PipeTcpNet(ip, 102)
                 {
                     ConnectTimeOut = 1000,    // 连接超时时间，单位毫秒
                     ReceiveTimeOut = 1000,    // 接收设备数据反馈的超时时间

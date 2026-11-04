@@ -1,4 +1,5 @@
-﻿using Sunny.UI;
+﻿using Microsoft.Extensions.DependencyInjection;
+using Sunny.UI;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Dl_FormsApp1.common;
 
 namespace Dl_FormsApp1.page {
     public partial class FormTransducer : UIForm {
@@ -17,7 +19,8 @@ namespace Dl_FormsApp1.page {
         {
 
             InitializeComponent();
-            //plcHelper = plc;
+            // 获取全局的plcHelper
+            plcHelper = FormTreeView.Services.GetRequiredService<PlcHelper>();
         }
 
         // 按下设置频率
@@ -37,6 +40,26 @@ namespace Dl_FormsApp1.page {
         private void button1_MouseUp(object sender, MouseEventArgs e)
         {
             plcHelper.plc.Write("M7.0", false);
+        }
+
+        // 设定运行状态
+        private void button2_MouseDown(object sender, MouseEventArgs e)
+        {
+            short? v = TransducerPools.GetCmdValueByCnName(uiComboBox1.Text);
+            plcHelper.plc.Write("vw2502", v.Value);
+            plcHelper.plc.Write("M7.0", true);
+
+        }
+
+        private void button2_MouseUp(object sender, MouseEventArgs e)
+        {
+            plcHelper.plc.Write("M7.0", false);
+
+        }
+
+        private void FormTransducer_Load(object sender, EventArgs e)
+        {
+            uiComboBox1.SelectedIndex = 0;
         }
     }
 }

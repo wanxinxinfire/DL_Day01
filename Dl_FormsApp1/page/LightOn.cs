@@ -1,4 +1,7 @@
 ﻿using DL_Day01;
+using Dl_FormsApp1.page;
+using Microsoft.Extensions.DependencyInjection;
+using S7.Net;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,17 +12,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using S7.Net;
 
 namespace Dl_FormsApp1 {
     public partial class LightOn : Form {
+
+        private  PlcHelper plcHelper;
+
         public LightOn()
         {
             InitializeComponent();
+
+            plcHelper = FormTreeView.Services.GetRequiredService<PlcHelper>();
         }
 
         // 创建PLC连接对接
-        Plc plc = new Plc(CpuType.S7200Smart, "192.168.0.2", 0, 0);
+        //Plc plc = new Plc(CpuType.S7200Smart, "192.168.0.2", 0, 0);
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
@@ -37,7 +44,7 @@ namespace Dl_FormsApp1 {
         {
             //btn_red.BackColor = Color.Silver;
             // 设置PLC的红灯亮
-            plc.Write("Q0.4", false);
+            plcHelper.plc.Write("Q0.4", false);
             //btn_red.BackColor = Color.Red;
             AddLog("红灯灭");
         }
@@ -52,7 +59,7 @@ namespace Dl_FormsApp1 {
                 return;
             }
             // 设置PLC的红灯亮
-            plc.Write("Q0.4", true);
+            plcHelper.plc.Write("Q0.4", true);
             //btn_red.BackColor = Color.Red;
             AddLog("红灯亮");
 
@@ -73,7 +80,7 @@ namespace Dl_FormsApp1 {
         // 检查PLC是否连接，返回true=已连接；false=未连接
         private bool checkPlcOpen()
         {
-            if (!plc.IsConnected) // 这里用你PLC对象自带的连接属性！
+            if (!plcHelper.isStartFlag) // 这里用你PLC对象自带的连接属性！
             {
                 MessageBox.Show("请先连接PLC");
                 return false;
@@ -90,12 +97,12 @@ namespace Dl_FormsApp1 {
             btn_green.BackColor = Color.Red;
             if (!greenLightFlag)
             {
-                plc.Write("Q0.5", true);
+                plcHelper.plc.Write("Q0.5", true);
                 AddLog("绿灯亮");
             }
             else
             {
-                plc.Write("Q0.5", false);
+                plcHelper.plc.Write("Q0.5", false);
                 AddLog("绿灯亮");
             }
 
@@ -105,43 +112,22 @@ namespace Dl_FormsApp1 {
         private void button7_Click(object sender, EventArgs e)
         {
             btn_green.BackColor = Color.Silver;
-            plc.Write("Q0.5", false);
+            plcHelper.plc.Write("Q0.5", false);
             AddLog("绿灯灭");
         }
 
         private void button8_Click(object sender, EventArgs e)
         {
             //btn_yellow.BackColor = Color.Red;
-            plc.Write("Q1.1", true);
+            plcHelper.plc.Write("Q1.1", true);
             AddLog("黄灯亮");
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
             //btn_yellow.BackColor = Color.Silver;
-            plc.Write("Q1.1", false);
+            plcHelper.plc.Write("Q1.1", false);
             AddLog("黄灯灭");
-        }
-
-
-        private void button9_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label6_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label7_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label11_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -198,20 +184,20 @@ namespace Dl_FormsApp1 {
                 switch (numberEunm)
                 {
                     case NumberEunm.odd_:
-                        plc.Write("Q1.1", true);
-                        plc.Write("Q0.4", false);
-                        plc.Write("Q0.5", false);
+                        plcHelper.plc.Write("Q1.1", true);
+                        plcHelper.plc.Write("Q0.4", false);
+                        plcHelper.plc.Write("Q0.5", false);
                         break;
                     case NumberEunm.decimal_:
                         // 黄灯亮
-                        plc.Write("Q1.1", true);
-                        plc.Write("Q0.4", false);
-                        plc.Write("Q0.5", false);
+                        plcHelper.plc.Write("Q1.1", true);
+                        plcHelper.plc.Write("Q0.4", false);
+                        plcHelper.plc.Write("Q0.5", false);
                         break;
                     case NumberEunm.even_:
-                        plc.Write("Q0.5", true);
-                        plc.Write("Q1.1", false);
-                        plc.Write("Q0.4", false);
+                        plcHelper.plc.Write("Q0.5", true);
+                        plcHelper.plc.Write("Q1.1", false);
+                        plcHelper.plc.Write("Q0.4", false);
                         break;
                 }
 
@@ -362,11 +348,11 @@ namespace Dl_FormsApp1 {
         {
             // 读取PLC中的三色灯状态
             // Q0.5 绿灯
-            bool greenLightFlag = Convert.ToBoolean(plc.Read("Q0.5"));
+            bool greenLightFlag = Convert.ToBoolean(plcHelper.plc.ReadBool("Q0.5"));
             // Q0.4	红灯
-            bool redLightFlag = Convert.ToBoolean(plc.Read("Q0.4"));
+            bool redLightFlag = Convert.ToBoolean(plcHelper.plc.ReadBool("Q0.4"));
             // Q1.1 黄灯
-            bool yellowLightFlag = Convert.ToBoolean(plc.Read("Q1.1"));
+            bool yellowLightFlag = Convert.ToBoolean(plcHelper.plc.ReadBool("Q1.1"));
 
             // 根据PLC中的三色灯状态，设置界面中的三色灯状态
             if (redLightFlag)
@@ -382,42 +368,37 @@ namespace Dl_FormsApp1 {
             {
                 yellowLightOn();
             }
-
-
-
-
-
         }
 
         private void button13_Click(object sender, EventArgs e)
         {
-            // 由于PLC是盗版的，第一次连接可能会失败，所以需要重试
-            // 打开PLC连接
-            try
-            {
-                plc.Open();
-            }
-            catch (Exception)
-            {
-                Console.WriteLine("PLC第一次连接失败");
-            }
-            finally
-            {
-                // 判断硬件是否连接成功
-                if (plc.IsConnected)
-                {
-                    // 设置按钮为红色 按钮提示词是运行中 并且不可以再次点击
-                    button13.BackColor = Color.Green;
-                    button13.Text = "PLC连接中";
-                    // 设置按钮不能点击
-                    button13.Enabled = false;
-                    MessageBox.Show("PLC连接成功");
-                }
-                else
-                {
-                    MessageBox.Show("PLC连接失败");
-                }
-            }
+            //// 由于PLC是盗版的，第一次连接可能会失败，所以需要重试
+            //// 打开PLC连接
+            //try
+            //{
+            //    plc.Open();
+            //}
+            //catch (Exception)
+            //{
+            //    Console.WriteLine("PLC第一次连接失败");
+            //}
+            //finally
+            //{
+            //    // 判断硬件是否连接成功
+            //    if (plc.IsConnected)
+            //    {
+            //        // 设置按钮为红色 按钮提示词是运行中 并且不可以再次点击
+            //        button13.BackColor = Color.Green;
+            //        button13.Text = "PLC连接中";
+            //        // 设置按钮不能点击
+            //        button13.Enabled = false;
+            //        MessageBox.Show("PLC连接成功");
+            //    }
+            //    else
+            //    {
+            //        MessageBox.Show("PLC连接失败");
+            //    }
+            //}
 
 
         }
@@ -427,16 +408,16 @@ namespace Dl_FormsApp1 {
         // 关闭PLC连接
         private void button14_Click(object sender, EventArgs e)
         {
-            // 关闭PLC连接
-            plc.Close();
-            // 弹窗提示
-            if (!plc.IsConnected)
-            {
-                MessageBox.Show("PLC已关闭");
-            }
-            // 恢复按钮状态
-            button13.BackColor = Color.DimGray;
-            button13.Text = "PLC连接";
+            //// 关闭PLC连接
+            //plc.Close();
+            //// 弹窗提示
+            //if (!plc.IsConnected)
+            //{
+            //    MessageBox.Show("PLC已关闭");
+            //}
+            //// 恢复按钮状态
+            //button13.BackColor = Color.DimGray;
+            //button13.Text = "PLC连接";
         }
 
         private void btn_yellow_Click(object sender, EventArgs e)
@@ -448,24 +429,24 @@ namespace Dl_FormsApp1 {
         private void button8_MouseDown(object sender, MouseEventArgs e)
         {
             // 若是不在连接操作前 需要判断是否成功连接PLC 
-            if (!plc.IsConnected)
+            if (!plcHelper.isPlcConnect())
             {
                 MessageBox.Show("请先连接PLC");
                 return;
             }
-            plc.Write("Q1.1", true);
+            plcHelper.plc.Write("Q1.1", true);
         }
 
         private void button8_MouseUp(object sender, MouseEventArgs e)
         {
-            plc.Write("Q1.1", false);
+            plcHelper.plc.Write("Q1.1", false);
         }
 
-        private  void button12_Click(object sender, EventArgs e)
+        private void button12_Click(object sender, EventArgs e)
         {
 
             //检查plc是否连接
-            if (!plc.IsConnected)
+            if (!plcHelper.isPlcConnect())
             {
                 MessageBox.Show("请先连接PLC");
                 return;
@@ -488,7 +469,7 @@ namespace Dl_FormsApp1 {
         {
             btn16 = false;
             // 设置PLC黄灯关闭
-            plc.Write("Q1.1", false);
+            plcHelper.plc.Write("Q1.1", false);
         }
 
         private NumberEunm GetNumberType(double number)
@@ -541,9 +522,9 @@ namespace Dl_FormsApp1 {
             // 设置闪烁
             while (btn16)
             {
-                plc.Write("Q1.1", true);
+                plcHelper.plc.Write("Q1.1", true);
                 await Task.Delay(1000);
-                plc.Write("Q1.1", false);
+                plcHelper.plc.Write("Q1.1", false);
                 await Task.Delay(1000);
             }
 

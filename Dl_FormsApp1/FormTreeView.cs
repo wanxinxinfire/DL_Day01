@@ -1,4 +1,6 @@
-﻿using Sunny.UI;
+﻿using Dl_FormsApp1.common;
+using Microsoft.Extensions.DependencyInjection;
+using Sunny.UI;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,13 +10,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Dl_FormsApp1.common;
 
 namespace Dl_FormsApp1.page {
     public partial class FormTreeView : UIForm {
 
         // 设置PLC 连接对象
         private PlcHelper plcHelper { get; set; }
+
+        public static IServiceProvider Services { get; private set; }
 
         // 连接起始时间，null=未连接
         public static DateTime? ConnectStartTime { get; set; }
@@ -25,7 +28,11 @@ namespace Dl_FormsApp1.page {
         public FormTreeView()
         {
             InitializeComponent();
+
             plcHelper = new PlcHelper();
+            var serviceCollection = new ServiceCollection();
+            serviceCollection.AddSingleton<PlcHelper>(plcHelper); // 只注册PLC
+            Services = serviceCollection.BuildServiceProvider();
         }
         // 页面加载事件
         private void FormTreeView_Load(object sender, EventArgs e)
@@ -78,7 +85,7 @@ namespace Dl_FormsApp1.page {
                 string formName = node.Tag.ToString();
                 // 跳转页面
                 try
-                {
+                {   
                     PageType pageType = PageUtils.GetPageType(formName);
                     Form form = PageUtils.getFormPage(pageType);
                     // 添加页面
@@ -110,17 +117,19 @@ namespace Dl_FormsApp1.page {
             }
             else
             {
-                plcHelper.startUpPlc();
-                if (plcHelper.isPlcConnect())
+                plcHelper.startUpPlc("192.168.0.2");
+                if (plcHelper.isStartFlag)
                 {
                     btn_plc.Text = "断开";
                     plc_status_lab.Text = "PLC 状态：已连接";
                     ConnectStartTime = DateTime.Now;
                     plc_open_time.Text = ("连接时长: " + DateTime.Now.Subtract(ConnectStartTime.Value).ToString(@"hh\:mm\:ss"));
                     timer1.Start();
+                    
                 }
 
             }
+            //Program.GlobalPlc = plcHelper;
         }
 
         private void timer1_Tick(object sender, EventArgs e)

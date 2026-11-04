@@ -101,6 +101,8 @@
             this.button2.TabIndex = 5;
             this.button2.Text = "启动";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.button2_MouseDown);
+            this.button2.MouseUp += new System.Windows.Forms.MouseEventHandler(this.button2_MouseUp);
             // 
             // uiLabel2
             // 
@@ -125,6 +127,7 @@
             this.Name = "FormTransducer";
             this.Text = "FormTransducer";
             this.ZoomScaleRect = new System.Drawing.Rectangle(22, 22, 1009, 648);
+            this.Load += new System.EventHandler(this.FormTransducer_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownHz)).EndInit();
             this.ResumeLayout(false);
 

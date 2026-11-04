@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Dl_FormsApp1.common {
-    internal class VfdCommandConst {
+    public static class TransducerPools {
 
         // <summary>
         /// 通讯命令

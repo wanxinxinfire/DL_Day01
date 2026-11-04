@@ -254,7 +254,7 @@
             this.label6.Size = new System.Drawing.Size(35, 18);
             this.label6.TabIndex = 18;
             this.label6.Text = "数A";
-            this.label6.Click += new System.EventHandler(this.label6_Click);
+            //this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // texBox_add_A
             // 
@@ -370,7 +370,7 @@
             this.label7.Size = new System.Drawing.Size(26, 18);
             this.label7.TabIndex = 33;
             this.label7.Text = "加";
-            this.label7.Click += new System.EventHandler(this.label7_Click);
+            //this.label7.Click += new System.EventHandler(this.label7_Click);
             // 
             // label8
             // 
@@ -411,7 +411,7 @@
             this.label11.Size = new System.Drawing.Size(44, 18);
             this.label11.TabIndex = 37;
             this.label11.Text = "结果";
-            this.label11.Click += new System.EventHandler(this.label11_Click);
+            //this.label11.Click += new System.EventHandler(this.label11_Click);
             // 
             // texBox_div_R
             // 
